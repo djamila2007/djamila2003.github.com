@@ -1,0 +1,305 @@
+/* Palette : #FFB894, #FB9590, #DC586D, #A33757, #852E4E, #4C1D3D */
+
+/* Fond gradient global (dégradé inspiré de ton image) */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(
+    180deg,
+    #6A2749 0%,
+    #8A355A 30%,
+    #B14A6D 55%,
+    #E48B8B 75%,
+    #F7B49E 100%
+  );
+  background-attachment: fixed;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Stage pour positionnement décor */
+.stage {
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* PILL STACK (décor) */
+.pills {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 12%;
+  width: min(680px, 90%);
+  height: 360px;
+  pointer-events: none;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: 10px;
+  z-index: 0;
+  border-radius: 28px;
+  padding-top: 8px;
+}
+
+.pill {
+  display:block;
+  width: 80%;
+  height: 56px;
+  border-radius: 40px;
+  box-shadow: 0 18px 30px rgba(12,10,15,0.25);
+  transform-origin: center;
+}
+
+/* Chat container (au dessus des pills) */
+.chat-container{
+  max-width: 880px;
+  width: 100%;
+  background: rgba(255,255,255,0.92);
+  border-radius: 16px;
+  box-shadow: 0 20px 45px rgba(12,10,15,0.35);
+  display:flex;
+  flex-direction:column;
+  height: 74vh;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* En-tête */
+.chat-header{
+  padding:18px 22px;
+  border-bottom:1px solid rgba(16,24,40,0.06);
+  font-weight:600;
+  background: linear-gradient(90deg, rgba(255,255,255,0.45), rgba(255,255,255,0.6));
+}
+
+/* Zone messages */
+.messages{
+  flex:1;
+  padding:22px;
+  overflow-y:auto;
+  background: linear-gradient(180deg, rgba(255,255,255,0.00), rgba(255,255,255,0.02));
+}
+
+/* Bulles */
+.message{
+  max-width:72%;
+  padding:12px 16px;
+  border-radius:14px;
+  margin-bottom:12px;
+  line-height:1.4;
+  word-wrap:break-word;
+  box-shadow: 0 6px 18px rgba(12,10,15,0.06);
+}
+
+/* Utilisateur : couleur sombre/punchy */
+.user{
+  background: linear-gradient(180deg, #852E4E, #4C1D3D);
+  color: #fff;
+  margin-left:auto;
+  border-bottom-right-radius:6px;
+  border-bottom-left-radius:14px;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+}
+
+/* Bot : fond clair, texte foncé */
+.bot{
+  background: rgba(255,255,255,0.96);
+  color:#111827;
+  margin-right:auto;
+  border-bottom-left-radius:6px;
+  border-bottom-right-radius:14px;
+}
+
+/* Footer */
+.chat-footer{
+  padding:14px;
+  border-top:1px solid rgba(16,24,40,0.04);
+  display:flex;
+  gap:10px;
+  background: rgba(255,255,255,0.7);
+}
+
+/* Input styles */
+.chat-footer input.form-control{
+  flex:1;
+  border-radius: 10px;
+  border: 1px solid rgba(16,24,40,0.06);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* Bouton primary assorti */
+.btn-primary{
+  background: #A33757;
+  border: none;
+  border-radius:10px;
+  padding: 8px 16px;
+  box-shadow: 0 6px 18px rgba(163,55,87,0.18);
+}
+.btn-primary:hover {
+  background: linear-gradient(180deg, #7A2A49, #3E1630);
+  transform: translateY(-1px);
+}
+
+/* hint (petit texte) */
+.hint{
+  font-size:0.85rem;
+  color:#6b7280;
+  padding:12px 20px;
+  background: transparent;
+}
+
+/* Responsive */
+@media (max-width:720px) {
+  .pills { top:6%; height:260px; }
+  .pill { height:48px; }
+  .message{ max-width:86%; }
+  .chat-container{ height:84vh; margin: 0 10px; }
+}
+
+/* =========================
+   Thème Bootstrap — Beauty
+   (à coller en bas de css/style.css)
+   ========================= */
+
+/* Couleurs principales (palette) */
+:root{
+  --beauty-1: #FFB894;
+  --beauty-2: #FB9590;
+  --beauty-3: #DC586D;
+  --beauty-4: #A33757; /* accent principal */
+  --beauty-5: #852E4E;
+  --beauty-6: #4C1D3D; /* accent foncé */
+  --btn-radius: 10px;
+}
+
+/* -------------------------
+   Bouton primary (garde le dégradé, s'assombrit au hover)
+   ------------------------- */
+.btn-primary {
+  background: linear-gradient(180deg, var(--beauty-4), var(--beauty-6));
+  border: none;
+  border-radius: var(--btn-radius);
+  padding: 8px 16px;
+  box-shadow: 0 6px 18px rgba(163,55,87,0.18);
+  color: #FFF;
+  transition: transform .08s ease, box-shadow .12s ease, filter .08s ease;
+}
+
+/* on assombrit le dégradé (même gradient retravaillé) */
+.btn-primary:hover,
+.btn-primary:focus {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--beauty-4) 75%, black 25%), color-mix(in srgb, var(--beauty-6) 75%, black 25%));
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(60,18,36,0.18);
+  outline: none;
+}
+
+/* fallback pour navigateurs sans color-mix */
+@supports not (color: color-mix(in srgb, var(--beauty-4) 75%, black 25%)) {
+  .btn-primary:hover,
+  .btn-primary:focus {
+    background: linear-gradient(180deg, #7a2745, #33121f);
+  }
+}
+
+/* supprime le halo bleu par défaut sur focus et garde un contour doux */
+.btn-primary:focus {
+  box-shadow: 0 0 0 4px rgba(163,55,87,0.10);
+}
+
+/* style pour btn-primary disabled */
+.btn-primary:disabled,
+.btn-primary[disabled] {
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
+}
+
+/* -------------------------
+   Modal (header dégradé, contenu arrondi)
+   ------------------------- */
+.modal-content {
+  border-radius: 14px;
+  overflow: hidden;
+  border: none;
+}
+
+.modal-header {
+  background: linear-gradient(90deg, var(--beauty-3), var(--beauty-4));
+  color: #fff;
+  border-bottom: none;
+  align-items: center;
+}
+
+.modal-title {
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+/* bouton close blanc amélioré */
+.btn-close.btn-close-white {
+  filter: brightness(1.3);
+  opacity: 1;
+}
+
+/* modal body text */
+.modal-body {
+  color: #111827;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* footer clearer */
+.modal-footer {
+  border-top: 1px solid rgba(0,0,0,0.04);
+  background: rgba(255,255,255,0.03);
+}
+
+/* -------------------------
+   Toast personnalisé (si tu veux un toast plus tard)
+   ------------------------- */
+.toast.toast-beauty {
+  border-radius: 12px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(12,10,15,0.25);
+  font-size: 0.95rem;
+}
+
+.toast-header {
+  background: linear-gradient(90deg, var(--beauty-3), var(--beauty-4));
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* -------------------------
+   Small UI polish for chat-area buttons/links
+   ------------------------- */
+.message.user .btn,
+.message.bot .btn {
+  border-radius: 8px;
+}
+
+/* Adjust link colors used inside modals/messages */
+a.theme-link {
+  color: var(--beauty-4);
+  text-decoration: underline;
+}
+a.theme-link:hover {
+  color: var(--beauty-6);
+}
+
+/* -------------------------
+   Mobile tweaks
+   ------------------------- */
+@media (max-width:720px) {
+  .modal-dialog { margin: 1rem; }
+  .btn-primary { padding: 10px 14px; }
+}
